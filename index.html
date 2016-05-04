@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <link rel="stylesheet" type="text/css" href="media_button_bar/css/media_button_bar.css">
+        <link rel="stylesheet" type="text/css" href="jqm/jquery.mobile-min.css">
+        <meta charset="UTF-8">
+        <title>ControleApp</title>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+        <!-- <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1"> -->
+        <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=no">
+        <!--<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0 ,user-scalable=no">-->
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1, maximum-scale=2"> -->
+
+        <style>
+            @-ms-viewport { width: 100vw ; min-zoom: 100% ; zoom: 100% ; }          @viewport { width: 100vw ; min-zoom: 100% zoom: 100% ; }
+                @-ms-viewport { user-zoom: fixed ; min-zoom: 100% ; }                   @viewport { user-zoom: fixed ; min-zoom: 100% ; }
+        </style>
+
+        <link rel="stylesheet" href="css/app.css">
+        <link rel="stylesheet" type="text/css" href="css/index_main.less.css" class="main-less">
+        <link rel="stylesheet" type="text/css" href="js/dist/sweetalert.css">
+
+        <script src="cordova.js" id="xdkJScordova_"></script>
+        <script src="js/init-app.js"></script>
+        <script src="xdk/init-dev.js"></script>
+        <script type="application/javascript" src="lib/jquery.min.js"></script>
+        <script type="application/javascript" src="jqm/jquery.mobile-min.js" data-ver="0"></script>
+        <script type="application/javascript" src="js/index_user_scripts.js"></script>
+        <script type="text/javascript" src="js/json2.js"></script>
+        <script src="js/dist/sweetalert.min.js"></script>
+        <script type="application/javascript" src="xdk/ad/jqm_subpage.js"></script>
+        <script src="http://debug-software.intel.com/target/target-script-min.js#6UHNdJo4oRpv5cok3Q-TaLziMrnkIbNct-pwOiQvUBY"></script>
+        <script type="application/javascript" src="js/funcoes_webservices.js"></script>
+
+        <script>
+           
+            function backButtonPressed() {
+                navigator.app.exitApp();
+            }
+            document.addEventListener("backbutton", backButtonPressed, false);
+        </script>
+
+        <script>
+            $( document ).on( "click", ".login", function() {
+                var $this = $( this ),
+                theme = $this.jqmData( "theme" ) || $.mobile.loader.prototype.options.theme,
+                msgText = $this.jqmData( "msgtext" ) || $.mobile.loader.prototype.options.text,
+                textVisible = $this.jqmData( "textvisible" ) || $.mobile.loader.prototype.options.textVisible,
+                textonly = !!$this.jqmData( "textonly" );
+                html = $this.jqmData( "html" ) || "";
+            $.mobile.loading( "show", {
+                    text: msgText,
+                    textVisible: textVisible,
+                    theme: theme,
+                    textonly: textonly,
+                    html: html
+            });
+                login();
+            })
+        </script>
+
+        <script>
+            $( document ).on( "click", ".buscar_agendamento", function() {
+                var $this = $( this ),
+                theme = $this.jqmData( "theme" ) || $.mobile.loader.prototype.options.theme,
+                msgText = $this.jqmData( "msgtext" ) || $.mobile.loader.prototype.options.text,
+                textVisible = $this.jqmData( "textvisible" ) || $.mobile.loader.prototype.options.textVisible,
+                textonly = !!$this.jqmData( "textonly" );
+                html = $this.jqmData( "html" ) || "";
+            $.mobile.loading( "show", {
+                    text: msgText,
+                    textVisible: textVisible,
+                    theme: theme,
+                    textonly: textonly,
+                    html: html
+            });
+                busca_agendamentos();
+            })
+        </script>
+
+        <script>
+            $( document ).on( "click", ".numero_agendamento", function() {
+                var $this = $( this ),
+                theme = $this.jqmData( "theme" ) || $.mobile.loader.prototype.options.theme,
+                msgText = $this.jqmData( "msgtext" ) || $.mobile.loader.prototype.options.text,
+                textVisible = $this.jqmData( "textvisible" ) || $.mobile.loader.prototype.options.textVisible,
+                textonly = !!$this.jqmData( "textonly" );
+                html = $this.jqmData( "html" ) || "";
+            $.mobile.loading( "show", {
+                    text: msgText,
+                    textVisible: textVisible,
+                    theme: theme,
+                    textonly: textonly,
+                    html: html
+            });
+                numero_agendamento();
+            })
+        </script>
+
+        <script>
+            $( document ).on( "click", ".Agendar", function() {
+            var $this = $( this ),
+            theme = $this.jqmData( "theme" ) || $.mobile.loader.prototype.options.theme,
+            msgText = $this.jqmData( "msgtext" ) || $.mobile.loader.prototype.options.text,
+            textVisible = $this.jqmData( "textvisible" ) || $.mobile.loader.prototype.options.textVisible,
+            textonly = !!$this.jqmData( "textonly" );
+            html = $this.jqmData( "html" ) || "";
+        $.mobile.loading( "show", {
+                text: msgText,
+                textVisible: textVisible,
+                theme: theme,
+                textonly: textonly,
+                html: html
+        });
+        $('#botao').attr('disabled', 'disabled');
+        Agendar();
+    })
+        </script>
+
+    </head>
+
+    <body>
+        <div class="upage vertical-col left" id="mainpage" data-role="page">
+            <div class="widget uib_w_1 scale-image d-margins" data-uib="media/img" data-ver="0">
+                <figure class="figure-align">
+                    <img src="images/H1sistemas.png">
+
+                    <figcaption data-position="bottom"></figcaption>
+                </figure>
+            </div>
+            <div class="table-thing with-label widget uib_w_8 d-margins" data-uib="jquery_mobile/input" data-ver="0">
+                <label class="narrow-control label-top-left" for="Login">Login</label>
+                <input class="wide-control" placeholder="Informe o login" type="text" name="Login" id="Login">
+            </div>
+            <div class="table-thing with-label widget uib_w_9 d-margins" data-uib="jquery_mobile/input" data-ver="0">
+                <label class="narrow-control label-top-left" for="Senha">Senha</label>
+                <input class="wide-control" placeholder="Informe a senha" type="password" name="Senha" id="Senha">
+            </div>
+
+            <a class="widget uib_w_2 login d-margins" data-uib="jquery_mobile/button" data-ver="0" data-role="button" id="logar" data-transition="fade">Realizar login</a>
+
+        </div>
+        <!-- FINAL PAGINA LOGIN -->
+
+        <!-- MENU PAGINA OPÇÕES -->
+        <div class="upage vertical-col left" id="opcoes" data-role="page">
+            <div class="widget uib_w_3 scale-image d-margins" data-uib="media/img" data-ver="0">
+                <figure class="figure-align">
+                    <img src="images/H1sistemas.png">
+                    <figcaption data-position="bottom"></figcaption>
+                </figure>
+            </div>
+            <div class="grid grid-pad urow uib_row_1 row-height-1" data-uib="layout/row" data-ver="0">
+                <div class="col uib_col_1 col-0_12-12" data-uib="layout/col" data-ver="0">
+                    <div class="widget-container content-area vertical-col">
+                        <span class="uib_shim"></span>
+                    </div>
+                </div>
+                <span class="uib_shim"></span>
+            </div>
+            <div>
+                <center>
+                    <a class="uib-graphic-button buscar_agendamento default-graphic-sizing default-image-sizing hover-graphic-button active-graphic-button default-graphic-button default-graphic-text widget uib_w_4 d-margins media-button-text-bottom" data-uib="media/graphic_button"
+                    data-ver="0" id="ConsultarAgendamento" data-transition="fade">
+                        <img src="images/consultar_agendamento.png">
+                        <span class="uib-caption">Consultar agendamento</span>
+                    </a>
+                    <a class="uib-graphic-button default-graphic-sizing default-image-sizing hover-graphic-button active-graphic-button default-graphic-button default-graphic-text widget uib_w_5 d-margins media-button-text-bottom" data-uib="media/graphic_button" data-ver="0"
+                    id="RealizarAgendamento" href="#RealizarAgendamento" data-transition="fade">
+                        <img src="images/agendamento.png">
+                        <span class="uib-caption">Realizar agendamento</span>
+                    </a>
+                </center>
+            </div>
+
+        </div>
+        <!-- FINAL PAGINA OPÇÕES -->
+
+        <!-- MENU PAGINA RealizarAgendamento -->
+        <div class="upage" id="RealizarAgendamento" name="RealizarAgendamento" data-role="page">
+            <div class="upage-outer">
+                <div class="upage-content ac0 content-area vertical-col left" id="page_67_21">
+                    <div class="widget uib_w_3 scale-image d-margins" data-uib="media/img" data-ver="0">
+                        <figure class="figure-align">
+                            <img src="images/H1sistemas.png">
+
+                            <figcaption data-position="bottom"></figcaption>
+                        </figure>
+                    </div><a class="widget uib_w_23 d-margins btn_voltar_agendamentos btn_voltar_opcoes_agendamento" data-uib="jquery_mobile/button" data-ver="0" data-role="button" data-icon="arrow-l" id="btn_voltar_opcoes_Agendar" href="#opcoes" data-transition="fade">Voltar</a>
+                    <div class="widget uib_w_12 d-margins titulo_agendamento" data-uib="media/text" data-ver="0">
+                        <div class="widget-container left-receptacle"></div>
+                        <div class="widget-container right-receptacle"></div>
+                        <div>
+                            <p>Agendar</p>
+                        </div>
+                    </div>
+                    <div class="table-thing with-label widget uib_w_13 d-margins" data-uib="jquery_mobile/input" data-ver="0">
+                        <label class="narrow-control label-top-left" for="DataInicial">Data Inicial*</label>
+                        <input class="wide-control" name="DataInicial" id="DataInicial" type="date">
+                    </div>
+                    <div class="table-thing with-label widget uib_w_14 d-margins" data-uib="jquery_mobile/input" data-ver="0">
+                        <label class="narrow-control label-top-left" for="DataFinal">Data final*</label>
+                        <input class="wide-control" type="date" name="DataFinal" id="DataFinal">
+                    </div>
+                    <div class="ui-checkbox widget uib_w_27 d-margins" data-uib="jquery_mobile/checkbox" data-ver="0">
+                        <label>Dia Todo
+                            <input type="checkbox" name="DiaTodo" id="DiaTodo" data-mini="true">
+                        </label>
+                    </div>
+                    <div class="table-thing with-label widget uib_w_16 d-margins" data-uib="jquery_mobile/input" data-ver="0">
+                        <label class="narrow-control label-top-left" for="HoraInicial">Hora inicial*</label>
+                        <input class="wide-control" placeholder="Your Username" type="time" name="HoraInicial" id="HoraInicial">
+                    </div>
+                    <div class="table-thing with-label widget uib_w_15 d-margins" data-uib="jquery_mobile/input" data-ver="0">
+                        <label class="narrow-control label-top-left" for="HoraFinal">Hora final*</label>
+                        <input class="wide-control" placeholder="Your Username" type="time" name="HoraFinal" id="HoraFinal">
+                    </div>
+                    <div class="ui-checkbox widget uib_w_28 d-margins" data-uib="jquery_mobile/checkbox" data-ver="0">
+                        <label>Atestado
+                            <input type="checkbox" name="Atestado" id="Atestado" data-mini="true">
+                        </label>
+                    </div>
+                    <div class="table-thing with-label widget uib_w_19 d-margins" data-uib="jquery_mobile/textarea" data-ver="0">
+                        <label class="narrow-control label-top-left" for="Observacao">Observação</label>
+                        <textarea class="wide-control" rows="2" wrap="soft" name="Observacao" id="Observacao"></textarea>
+                    </div>
+
+                    <button class="Agendar widget uib_w_2 d-margins" data-textonly="false" id="botao" name="botao" data-textvisible="true" data-msgtext="Agendando, aguarde!" data-inline="true">Agendar</button>
+
+                </div>
+            </div>
+        </div>
+        <a class="Agendar widget uib_w_2 d-margins" data-uib="jquery_mobile/button" data-ver="0" data-role="button" id="botao" name="botao" data-textvisible="true" data-msgtext="Agendando, aguarde!">
+            <!-- FINAL PAGINA RealizarAgendamento -->
+
+            <!-- MENU PAGINA ListaAgendamentos -->
+        </a>
+        <div class="upage vertical-col" id="ListaAgendamentos" name="ListaAgendamentos" data-role="page">
+            <div class="widget uib_w_26 scale-image d-margins" data-uib="media/img" data-ver="0">
+                <figure class="figure-align">
+                    <img src="images/H1sistemas.png">
+                    <figcaption data-position="bottom"></figcaption>
+                </figure>
+            </div><a class="widget uib_w_23 d-margins btn_voltar_agendamentos btn_voltar_opcoes_agendamento" data-uib="jquery_mobile/button" data-ver="0" data-role="button" data-icon="arrow-l" id="btn_voltar_opcoes_Agendar" href="#opcoes" data-transition="fade">Voltar</a>
+            <div class="widget uib_w_10 d-margins titulo_agendamento" data-uib="media/text" data-ver="0">
+                <div class="widget-container left-receptacle"></div>
+                <div class="widget-container right-receptacle"></div>
+                <div>
+                    <p>Agendamentos</p>
+                </div>
+            </div>
+
+            <div>
+                <form class="ui-filterable">
+                    <input id="myFilter" data-type="search">
+                </form>
+                <div id="listDiv">
+                    <ul id="AgendamentosList" data-role="listview" data-filter="true" data-input="#myFilter"></ul>
+                </div>
+            </div>
+        </div>
+        <!-- FINAL PAGINA ListaAgendamentos -->
+
+        <!-- MENU PAGINA DetalheAgendamento -->
+        <div class="upage vertical-col left" id="DetalheAgendamento" data-role="page">
+            <div class="widget uib_w_3 scale-image d-margins" data-uib="media/img" data-ver="0">
+                <figure class="figure-align">
+                    <img src="images/H1sistemas.png">
+                    <figcaption data-position="bottom"></figcaption>
+                </figure>
+            </div>
+            <a class="widget uib_w_23 d-margins btn_voltar_agendamentos btn_voltar_opcoes_agendamento" data-uib="jquery_mobile/button" data-ver="0" data-role="button" data-icon="arrow-l" id="btn_voltar_opcoes_detalhes" href="#ListaAgendamentos" data-transition="fade"
+            onclick="busca_agendamentos()">Voltar</a>
+            <center>
+                <div class="widget uib_w_24 d-margins" data-uib="media/text" data-ver="0">
+                    <div class="widget-container left-receptacle"></div>
+                    <div class="widget-container right-receptacle"></div>
+                    <div>
+                        <p>Agendamento</p>
+                        <label style="color: #4169E1; font-weight: bold;" id="AgendamentoDetalhe"></label>
+                    </div>
+                </div>
+                <div class="widget uib_w_25 d-margins" data-uib="media/text" data-ver="0">
+                    <div class="widget-container left-receptacle"></div>
+                    <div class="widget-container right-receptacle"></div>
+                    <div>
+                        <p>Situação</p>
+                        <label style="color: #4169E1; font-weight: bold;" id="SituacaoDetalhe"></label>
+                    </div>
+                </div>
+            </center>
+            <div class="table-thing with-label widget uib_w_13 d-margins" data-uib="jquery_mobile/input" data-ver="0">
+                <label class="narrow-control label-top-left" for="DataInicialDetalhe">Data Inicial</label>
+                <input class="wide-control" name="DataInicialDetalhe" id="DataInicialDetalhe" type="text" readonly ="readonly" >
+            </div>
+            <div class="table-thing with-label widget uib_w_14 d-margins" data-uib="jquery_mobile/input" data-ver="0">
+                <label class="narrow-control label-top-left" for="DataFinalDetalhe">Data final</label>
+                <input class="wide-control" type="text" name="DataFinalDetalhe" id="DataFinalDetalhe" readonly ="readonly" >
+            </div>
+            <div class="ui-checkbox widget uib_w_29 d-margins" data-uib="jquery_mobile/checkbox" data-ver="0">
+                 Dia Todo<input type="checkbox" name="DiaTodoDetalhe" id="DiaTodoDetalhe"><br>
+            </div>
+            <div class="table-thing with-label widget uib_w_16 d-margins" data-uib="jquery_mobile/input" data-ver="0">
+                <label class="narrow-control label-top-left" for="HoraInicialDetalhe">Hora inicial</label>
+                <input class="wide-control" type="time" name="HoraInicialDetalhe" id="HoraInicialDetalhe" readonly ="readonly" >
+            </div>
+            <div class="table-thing with-label widget uib_w_15 d-margins" data-uib="jquery_mobile/input" data-ver="0">
+                <label class="narrow-control label-top-left" for="HoraFinalDetalhe">Hora final</label>
+                <input class="wide-control" type="time" name="HoraFinalDetalhe" id="HoraFinalDetalhe" readonly ="readonly" >
+            </div>
+            <div class="ui-checkbox widget uib_w_30 d-margins" data-uib="jquery_mobile/checkbox" data-ver="0">
+                <fieldset>
+                    Atestado<input type="checkbox" name="AtestadoDetalhe" id="AtestadoDetalhe" ><br>
+                </fieldset>
+            </div>
+            <div class="table-thing with-label widget uib_w_19 d-margins" data-uib="jquery_mobile/textarea" data-ver="0">
+                <label class="narrow-control label-top-left" for="ObservacaoDetalhe">Observação</label>
+                <textarea class="wide-control" rows="2" wrap="soft" name="ObservacaoDetalhe" id="ObservacaoDetalhe" readonly ="readonly" ></textarea>
+            </div>
+        </div>
+    </body>
+
+</html>
