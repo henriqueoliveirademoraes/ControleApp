@@ -109,7 +109,7 @@
                                 self.document.getElementById('HoraFinalDetalhe').value = dados_agendamento.HORA_FINAL;
                                 
                                 
-                               // alert("DIA TODO = "+dados_agendamento.DIA_TODO+ "  ATESTADO = "+dados_agendamento.ATESTADO);
+                               
                              
                                 if(dados_agendamento.DIA_TODO === "S"){
                                     self.document.getElementById('DiaTodoDetalhe').checked = true;
