@@ -8,18 +8,15 @@
                     var login = Login.value;
                     var senha = Senha.value;
                     
-                    if ((login != "")&&(senha !="")){
+                    if ((login !== "")&&(senha !=="")){
 
-                        $.getJSON("http://localhost/WebService.asmx/Login?usuario="+login+"&senha="+senha+"", function(dados){
-
-                        //$.getJSON("http://henriquemoraes.ddns.net:90/WebService.asmx/Login?usuario="+login+"&senha="+senha+"", function(dados){
-                            if (dados != "SEM_VALOR") 
+                        $.getJSON("http://henriquemoraes.ddns.net:90/WebService.asmx/Login?usuario="+login+"&senha="+senha+"", function(dados){
+                            if (dados !== "SEM_VALOR") 
                             {
                                 $.each(dados,function(i,dados){
 
                                     codi_pes = JSON.parse(dados.CODI_PES);
                                     pessoal =  JSON.parse(dados.CODI_PES);
-                                    //sessionStorage.setItem("codigo_pessoal",codi_pes);
                                     $.mobile.loading( "hide" );
                                     location.href="#opcoes";
                                 });
@@ -39,16 +36,11 @@
             
              function busca_agendamentos(){
                 var list = $("#AgendamentosList").listview();
-                //alert("AgendamentosUsuario?cod_pessoal="+codi_pes+"");
                 $('#AgendamentosList').empty();
-                //$.getJSON("http://localhost:90/WebService.asmx/AgendamentosUsuario?cod_pessoal="+sessionStorage.getItem("codigo_pessoal")+"", function(dados_pessoal)
-                $.getJSON("http://localhost/WebService.asmx/AgendamentosUsuario?cod_pessoal="+codi_pes+"", function(dados_pessoal)
-                         
                           
-                //$.getJSON("http://henriquemoraes.ddns.net:90/WebService.asmx/AgendamentosUsuario?cod_pessoal="+sessionStorage.getItem("codigo_pessoal")+"", function(dados_pessoal)
-                          
+                $.getJSON("http://henriquemoraes.ddns.net:90/WebService.asmx/AgendamentosUsuario?cod_pessoal="+sessionStorage.getItem("codigo_pessoal")+"", function(dados_pessoal)
                 {
-                    if (dados_pessoal != "SEM_VALOR") 
+                    if (dados_pessoal !== "SEM_VALOR") 
                     {
                         $(list).html("");
                         $.each(dados_pessoal,function(i,obj){
@@ -87,16 +79,10 @@
             
             
               function buscar(numero_agendamento){
-                  
-                  
-                $.getJSON("http://localhost/WebService.asmx/BuscarAgendamento?agendamento=" + numero_agendamento+"", function(dados_agendamento){  
-                //$.getJSON("http://henriquemoraes.ddns.net:90/WebService.asmx/BuscarAgendamento?agendamento=" + numero_agendamento+"", function(dados_agendamento){
-                    
-                    //self.document.getElementById('DiaTodoDetalhe').checked = false;
-                    //self.document.getElementById('AtestadoDetalhe').checked = false;
-                    
-                    
-                        if (dados_agendamento != "SEM_VALOR") 
+         
+                $.getJSON("http://henriquemoraes.ddns.net:90/WebService.asmx/BuscarAgendamento?agendamento=" + numero_agendamento+"", function(dados_agendamento){
+             
+                        if (dados_agendamento !== "SEM_VALOR") 
                         {
                             $.each(dados_agendamento,function(i,dados_agendamento){
                                  window.location="#DetalheAgendamento";
@@ -107,23 +93,19 @@
                                 self.document.getElementById('HoraInicialDetalhe').value = dados_agendamento.HORA_INICIAL;
                                 self.document.getElementById('DataFinalDetalhe').value = dados_agendamento.DATA_FINAL;
                                 self.document.getElementById('HoraFinalDetalhe').value = dados_agendamento.HORA_FINAL;
-                                
-                                
-                               // alert("DIA TODO = "+dados_agendamento.DIA_TODO+ "  ATESTADO = "+dados_agendamento.ATESTADO);
-                             
-                                if(dados_agendamento.DIA_TODO == "S"){
+                      
+                                if(dados_agendamento.DIA_TODO === "S"){
                                     self.document.getElementById('DiaTodoDetalhe').checked = true;
                                 }else{
                                     self.document.getElementById('DiaTodoDetalhe').checked = false;
                                 }
                                 
-                                if(dados_agendamento.ATESTADO == "S"){
+                                if(dados_agendamento.ATESTADO === "S"){
                                     self.document.getElementById('AtestadoDetalhe').checked = true;
                                 }else{
                                     self.document.getElementById('AtestadoDetalhe').checked = false;
                                 }
-                                
-                                                               
+                                                   
                                 self.document.getElementById('ObservacaoDetalhe').value = dados_agendamento.OBSERVACAO;
                                $.mobile.loading( "hide" );  
                             });
@@ -138,8 +120,7 @@
             
             
             function Agendar(){
-                       
-                    //var colaborador = sessionStorage.getItem("codigo_pessoal");
+                    
                     var colaborador = codi_pes;
                     var data_inicial = DataInicial.value;
                     var data_final = DataFinal.value;
@@ -166,13 +147,11 @@
                     }
                     var observacao = Observacao.value;
                         
-                if ((data_inicial!= "")&&(data_final!="")&&(hora_inicial !="")&&(hora_final !="")){
-                        
-                $.getJSON("http://localhost/WebService.asmx/CadastrarAgendamento?CodigoColaborador="+colaborador+    "&datainicial="+data_inicial+"&datafinal="+data_final+"&horainicial="+hora_inicial+"&horafinal="+hora_final+"&diatodo="+dia_todo+"&atestado="+atestado+"&observacao="+observacao, function(Agendamento){
-                    
-                //$.getJSON("http://henriquemoraes.ddns.net:90/WebService.asmx/CadastrarAgendamento?CodigoColaborador="+colaborador+    "&datainicial="+data_inicial+"&datafinal="+data_final+"&horainicial="+hora_inicial+"&horafinal="+hora_final+"&diatodo="+dia_todo+"&atestado="+atestado+"&observacao="+observacao, function(Agendamento){
+                if ((data_inicial!== "")&&(data_final!=="")&&(hora_inicial !=="")&&(hora_final !=="")){
+               
+                $.getJSON("http://henriquemoraes.ddns.net:90/WebService.asmx/CadastrarAgendamento?CodigoColaborador="+colaborador+    "&datainicial="+data_inicial+"&datafinal="+data_final+"&horainicial="+hora_inicial+"&horafinal="+hora_final+"&diatodo="+dia_todo+"&atestado="+atestado+"&observacao="+observacao, function(Agendamento){
                             
-                            if (Agendamento == "AGENDADO") 
+                            if (Agendamento === "AGENDADO") 
                                 {
                                     swal("Agendamento realizado!");
                                     $.mobile.loading( "hide" );
@@ -195,7 +174,7 @@
                                 }
                                 else
                                 {
-                                    if(Agendamento == "ERRO")
+                                    if(Agendamento === "ERRO")
                                     {
                                         swal("Erro ao agendar, verifique com o administrador!");
                                          $.mobile.loading( "hide" );
