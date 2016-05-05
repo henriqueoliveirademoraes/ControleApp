@@ -39,7 +39,7 @@
              function busca_agendamentos(){
                 var list = $("#AgendamentosList").listview();
                 $('#AgendamentosList').empty();
-                //$.getJSON("http://localhost:90/WebService.asmx/AgendamentosUsuario?cod_pessoal="+sessionStorage.getItem("codigo_pessoal")+"", function(dados_pessoal)
+                
                 $.getJSON("http://localhost/WebService.asmx/AgendamentosUsuario?cod_pessoal="+codi_pes+"", function(dados_pessoal)
                          
                           
