@@ -8,7 +8,7 @@
                     var login = Login.value;
                     var senha = Senha.value;
                     
-                    if ((login !== "")&&(senha !=="")){
+                    if ((login !===== "")&&(senha !=="")){
 
                         $.getJSON("http://henriquemoraes.ddns.net:90/WebService.asmx/Login?usuario="+login+"&senha="+senha+"", function(dados){
                             if (dados !== "SEM_VALOR") 
