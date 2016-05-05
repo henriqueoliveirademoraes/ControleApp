@@ -19,7 +19,6 @@
 
                                     codi_pes = JSON.parse(dados.CODI_PES);
                                     pessoal =  JSON.parse(dados.CODI_PES);
-                                    //sessionStorage.setItem("codigo_pessoal",codi_pes);
                                     $.mobile.loading( "hide" );
                                     location.href="#opcoes";
                                 });
@@ -39,7 +38,6 @@
             
              function busca_agendamentos(){
                 var list = $("#AgendamentosList").listview();
-                //alert("AgendamentosUsuario?cod_pessoal="+codi_pes+"");
                 $('#AgendamentosList').empty();
                 //$.getJSON("http://localhost:90/WebService.asmx/AgendamentosUsuario?cod_pessoal="+sessionStorage.getItem("codigo_pessoal")+"", function(dados_pessoal)
                 $.getJSON("http://localhost/WebService.asmx/AgendamentosUsuario?cod_pessoal="+codi_pes+"", function(dados_pessoal)
@@ -92,10 +90,6 @@
                 $.getJSON("http://localhost/WebService.asmx/BuscarAgendamento?agendamento=" + numero_agendamento+"", function(dados_agendamento){  
                 //$.getJSON("http://henriquemoraes.ddns.net:90/WebService.asmx/BuscarAgendamento?agendamento=" + numero_agendamento+"", function(dados_agendamento){
                     
-                    //self.document.getElementById('DiaTodoDetalhe').checked = false;
-                    //self.document.getElementById('AtestadoDetalhe').checked = false;
-                    
-                    
                         if (dados_agendamento !== "SEM_VALOR") 
                         {
                             $.each(dados_agendamento,function(i,dados_agendamento){
@@ -108,9 +102,6 @@
                                 self.document.getElementById('DataFinalDetalhe').value = dados_agendamento.DATA_FINAL;
                                 self.document.getElementById('HoraFinalDetalhe').value = dados_agendamento.HORA_FINAL;
                                 
-                                
-                               
-                             
                                 if(dados_agendamento.DIA_TODO === "S"){
                                     self.document.getElementById('DiaTodoDetalhe').checked = true;
                                 }else{
@@ -139,7 +130,6 @@
             
             function Agendar(){
                        
-                    //var colaborador = sessionStorage.getItem("codigo_pessoal");
                     var colaborador = codi_pes;
                     var data_inicial = DataInicial.value;
                     var data_final = DataFinal.value;
